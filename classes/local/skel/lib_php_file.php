@@ -27,25 +27,6 @@ namespace tool_pluginskel\local\skel;
 
 use coding_exception;
 
-// Ruta completa al archivo mypage_logic.php dentro del plugin
-$ruta_mypage_logic = __DIR__ . '/mypage_logic.php';
-
-// Comprobar si el archivo existe antes de incluirlo
-if (file_exists($ruta_mypage_logic)) {
-    include_once $ruta_mypage_logic;
-} else {
-    // Manejo de errores si el archivo no existe
-    echo "Error: Archivo mypage_logic.php no encontrado.";
-}
-
-include_once __DIR__ . '/mypage_logic.php';
-
-if (!function_exists('testMyPage')) {
-    echo "Error: La función testMyPage no está definida en mypage_logic.php";
-}
-
-
-
 /**
  * Class representing the lib.php file.
  *
