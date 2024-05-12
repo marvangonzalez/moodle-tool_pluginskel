@@ -25,7 +25,26 @@
 
 namespace tool_pluginskel\local\skel;
 
-use tool_pluginskel\local\util\exception;
+use coding_exception;
+
+// Ruta completa al archivo mypage_logic.php dentro del plugin
+$ruta_mypage_logic = __DIR__ . '/mypage_logic.php';
+
+// Comprobar si el archivo existe antes de incluirlo
+if (file_exists($ruta_mypage_logic)) {
+    include_once $ruta_mypage_logic;
+} else {
+    // Manejo de errores si el archivo no existe
+    echo "Error: Archivo mypage_logic.php no encontrado.";
+}
+
+include_once __DIR__ . '/mypage_logic.php';
+
+if (!function_exists('testMyPage')) {
+    echo "Error: La función testMyPage no está definida en mypage_logic.php";
+}
+
+
 
 /**
  * Class representing the lib.php file.
@@ -64,4 +83,18 @@ class lib_php_file extends php_library_file {
 
         $this->data['self']['supports'][] = $feature;
     }
+    
+
+    public function pruebita() {
+        // Incluir el archivo mypage_logic.php si aún no se ha incluido
+        include_once __DIR__ . '/mypage_logic.php';
+        
+        // Crear una instancia de la clase donde se encuentra testMyPage, si es necesario
+        $instancia_mypage_logic = new \tool_pluginskel\local\skel\lib_php_file();  // Suponiendo que lib_php_file es la clase que contiene testMyPage
+    
+        // Llamar al método testMyPage usando la instancia creada
+        $instancia_mypage_logic->testMyPage();
+    }
+    
+
 }
